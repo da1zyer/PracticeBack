@@ -8,6 +8,7 @@ experiences = {
     "6": "moreThan6"
 }
 
+
 class VacancySchema(BaseModel):
     text: str
     experience: str

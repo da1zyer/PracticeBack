@@ -6,18 +6,18 @@ from models import VacancySchema, UserSchema, UserSchemaLogin
 from database import create_tables, reg_user, get_users, get_id, delete_tables, get_user_vacancies, delete_vacancies
 from auth.jwt_handler import sign_jwt
 from auth.jwt_bearer import jwtBearer
-import time
 
 origins = [
     "http://127.0.0.1:5500",
     "https://da1zyer.github.io"
 ]
 
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
    await create_tables()
    yield
-   print("Offline")
+   await delete_tables()
 
 
 app = FastAPI(lifespan=lifespan)
@@ -70,14 +70,10 @@ async def get_user_id(email: str):
     return await get_id(email)
 
 
-@app.get("/cleardb")
-async def clear_db():
-    return await delete_tables()
-
-
 @app.get("/getuservacs", dependencies=[Depends(jwtBearer())])
 async def get_user_vacs(id: int):
     return await get_user_vacancies(id)
+
 
 @app.delete("/deletevacs", dependencies=[Depends(jwtBearer())])
 async def get_user_vacs(id: int):

@@ -2,18 +2,20 @@ version: '3.8'
 
 services:
   backend:
+    restart: always
+    network_mode: host
     build:
       context: .
     env_file:
       - .env
     container_name: backend
     ports:
-      - 9999:8000
+      - 8000:8000
     depends_on:
       - db
-
-
   db:
+    restart: always
+    network_mode: host
     image: postgres:latest
     container_name: db
     env_file:
