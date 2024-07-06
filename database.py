@@ -112,6 +112,7 @@ async def get_id(email: str):
         result = await session.execute(query)
         return result.scalars().all()
 
+
 async def delete_vacancies(id):
     async with new_session() as session:
         query = delete(Vacancies).where(Vacancies.user_id == id)

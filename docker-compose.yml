@@ -1,9 +1,6 @@
-version: '3.8'
-
 services:
   backend:
     restart: always
-    network_mode: host
     build:
       context: .
     env_file:
@@ -13,14 +10,20 @@ services:
       - 8000:8000
     depends_on:
       - db
+    networks:
+      - custom
   db:
     restart: always
-    network_mode: host
     image: postgres:latest
     container_name: db
     env_file:
       - .env
     ports:
       - 5432:5432
+    networks:
+      - custom
+networks:
+  custom:
+    driver: bridge
 
 

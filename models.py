@@ -1,12 +1,7 @@
 from pydantic import BaseModel, Field, EmailStr
 from sqlalchemy import MetaData, Table, Column, Integer, String, ForeignKey
 
-experiences = {
-    "no": "noExperience",
-    "1_3": "between1And3",
-    "3_6": "between3And6",
-    "6": "moreThan6"
-}
+metadata = MetaData()
 
 
 class VacancySchema(BaseModel):
@@ -15,9 +10,6 @@ class VacancySchema(BaseModel):
     salary: int
     only_with_salary: bool
     user_id: int
-
-
-metadata = MetaData()
 
 
 class UserSchema(BaseModel):
