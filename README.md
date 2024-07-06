@@ -2,8 +2,8 @@
 ## **! В этом репозитории только Backend часть проекта, фронтенд доступен [здесь](https://github.com/da1zyer/hhparser.github.io) !**
 ## Как запустить проект
 В корневой папке проекта написать 2 команды:
-'docker compose build'
-'docker compose up'
+`docker compose build`
+`docker compose up`
 После этого открыть в браузере любой .html файл из Frontend-репозитория
 ## Как пользоваться платформой
 ### Регистрация
